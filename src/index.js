@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const rootReducer = combineReducers({
   planets: reducers.planetsReducer,
+  interceptors: reducers.interceptorsReducer
 });
 
 const store = createStore(
