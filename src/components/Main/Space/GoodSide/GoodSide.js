@@ -31,8 +31,21 @@ class GoodSide extends PureComponent {
   }
 
   componentDidMount() {
-    //Place lucas to a random planet
+    //Place Lucas in a random planet
     this.props.addKey();
+  }
+  
+  componentDidUpdate() {
+    const { planets } = this.props;
+    const tmpArr = [];
+    console.log('componentDidUpadte');
+    planets.map(item => {
+      item.lucas ? tmpArr.push(item) : null; 
+      return item;
+    });
+    //Need to figure out a better approch, 
+    //calls itself to many times due to props being updated.
+    if(tmpArr.length === 0) console.log('Game Over, Lucas has been captured. HF GL.');
   }
 
   render() {
