@@ -16,6 +16,9 @@ const planetsReducer = (state = reduxStore.planets, { type, payload }) => {
         item === filterById(newState, payload.el.id)[0]);
       delete newState[i].interceptor;
       return newState;
+    case 'ADD_KEY_TO_RND_EL':
+      newState[Math.floor(Math.random() * newState.length)].lucas = payload;
+      return newState;
     default:
       return state;
   }

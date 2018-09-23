@@ -30,6 +30,11 @@ class GoodSide extends PureComponent {
     this.setTimer(4, obj, el);
   }
 
+  componentDidMount() {
+    //Place lucas to a random planet
+    this.props.addKey();
+  }
+
   render() {
     const { planets } = this.props;
     return (
@@ -49,6 +54,7 @@ class GoodSide extends PureComponent {
 const mapActionsToProps = {
   updateElement: actions.updateElement,
   addElement: actions.addElement,
+  addKey: actions.addKey,
   removeKey: actions.removeKey
 }
 
