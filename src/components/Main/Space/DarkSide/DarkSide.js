@@ -11,9 +11,8 @@ class DarkSide extends PureComponent {
     this.handleDrop = this.handleDrop.bind(this);
   }
 
-  handleDrop = (interceptor) => {
-    console.log('handleDrop(): ', interceptor);
-    this.props.removeElement(interceptor);
+  handleDrop = (el) => {
+    this.props.removeElement(el);
   }
 
   render() {
@@ -24,7 +23,7 @@ class DarkSide extends PureComponent {
         <Interceptor 
           key={i} 
           interceptor={interceptor} 
-          handleDrop={(item) => this.handleDrop(item)}
+          handleDrop={(el) => this.handleDrop(el)}
         />
       )}
       </Fragment>

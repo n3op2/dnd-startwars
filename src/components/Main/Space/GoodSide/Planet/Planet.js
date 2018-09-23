@@ -12,7 +12,7 @@ const PlanetStyled = styled.div`
   background-image: url(${props => props.planet.interceptor ? props.planet.interceptor.imgSrc : props.planet.imgSrc });
 `
 
-const planetDropSpec = {
+const planetSource = {
   drop(props, monitor) {
     props.handleDrop(props.planet, monitor.getItem());
   }
@@ -21,22 +21,16 @@ const planetDropSpec = {
 const collect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
-  getItem: monitor.getItem()
 });
 
 const Planet = (props) => {
-  const { isOver, getItem, connectDropTarget } = props;
-  console.log('Planet: ', props.planet.interceptor);
-  if(props.planet.interceptor){
-    console.log('LANDED!');
-  } else {
-    console.log('FREE!');
-  }
+  const { isOver, connectDropTarget, planet } = props;
+
   return connectDropTarget(
     <div style={{ width: '50px', height: '50px' }}>
       <PlanetStyled
         isOver={isOver}
-        planet={props.planet} 
+        planet={planet} 
       />
     </div>
   )
@@ -44,6 +38,6 @@ const Planet = (props) => {
 
 export default DropTarget(
   ItemTypes.INTERCEPTOR, 
-  planetDropSpec, 
+  planetSource, 
   collect
 )(Planet);
