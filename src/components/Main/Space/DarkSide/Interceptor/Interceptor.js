@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ItemTypes } from '../../../../../Context';
 import { DragSource } from 'react-dnd';
 

@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import actions from '../../../../actions';
 import Interceptor from './Interceptor/Interceptor';
 
-import styled from 'styled-components';
-
 class DarkSide extends PureComponent {
   constructor(props) {
     super(props);
