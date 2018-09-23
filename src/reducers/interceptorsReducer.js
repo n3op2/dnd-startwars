@@ -9,6 +9,8 @@ const interceptorsReducer = (state = reduxStore.interceptors, action) => {
       );
       newArr.splice(index, 1);
       return newArr; 
+    case 'ADD_ELEMENT':
+      return [...newArr, action.payload.obj];
     default:
       return state;
   }

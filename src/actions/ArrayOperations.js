@@ -13,7 +13,15 @@ const updateElement = (el, obj) => ({
   }
 });
 
+const addElement = (obj) => ({
+  type: 'ADD_ELEMENT',
+  payload: {
+    obj: obj 
+  }
+});
+
 export { 
+  addElement,
   removeElement, 
   updateElement
 }

@@ -11,22 +11,23 @@ class GoodSide extends PureComponent {
     this.setTimer = this.setTimer.bind(this);
   }
 
-  setTimer = (length, obj) => {
-    let t = 0;
+  //Something I should consider moving to utils.js?
+  setTimer = (length, obj, el) => {
+    let seconds = 0;
     let countDown = setInterval(() => {
-      t++;
-      if(t >= length) {
+      seconds++;
+      if(seconds >= length) {
         clearInterval(countDown);
-        //Call action to return interceptor; 
-        console.log('Do something when it is over.');
-        console.log('arg2: ', obj);
+        this.props.addElement(obj);
+        this.props.removeKey(el);
       }
     }, 1000);
   }
 
   handleDrop = (el, obj) => {
     this.props.updateElement(el, obj);
-    this.setTimer(4, obj);
+    //Timer calls an action;
+    this.setTimer(4, obj, el);
   }
 
   render() {
@@ -46,7 +47,9 @@ class GoodSide extends PureComponent {
 }
 
 const mapActionsToProps = {
-  updateElement: actions.updateElement
+  updateElement: actions.updateElement,
+  addElement: actions.addElement,
+  removeKey: actions.removeKey
 }
 
 const mapStateToProps = (state) => ({
