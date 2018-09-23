@@ -8,10 +8,25 @@ class GoodSide extends PureComponent {
   constructor(props) {
     super(props);
     this.handleDrop = this.handleDrop.bind(this);
+    this.setTimer = this.setTimer.bind(this);
+  }
+
+  setTimer = (length, obj) => {
+    let t = 0;
+    let countDown = setInterval(() => {
+      t++;
+      if(t >= length) {
+        clearInterval(countDown);
+        //Call action to return interceptor; 
+        console.log('Do something when it is over.');
+        console.log('arg2: ', obj);
+      }
+    }, 1000);
   }
 
   handleDrop = (el, obj) => {
     this.props.updateElement(el, obj);
+    this.setTimer(4, obj);
   }
 
   render() {
