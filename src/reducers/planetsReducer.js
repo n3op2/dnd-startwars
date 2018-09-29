@@ -7,15 +7,16 @@ export const planetsReducer = (state = reduxStore.planets, { type, payload }) =>
   const newState = [...state];
   switch (type) {
     case 'UPDATE_ELEMENT':
-      return state.map(p => {
-        if (p.lucas) {
-          const {lucas, ...rest} = p
-          return {
-            ...rest,
-            interceptor: payload.obj,
+      return state.map(el => {
+        if (el.id === payload.id) {
+          const {...obj} = el;
+          if(el.lucas) {
+            const {lucas, ...noLucas} = obj;
+            return noLucas;
           }
+          return { ...obj, interceptor: payload.obj }
         }
-        return p
+        return el;
       })
     case 'REMOVE_KEY':
       const i = newState.findIndex(item =>
