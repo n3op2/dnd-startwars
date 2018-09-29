@@ -7,7 +7,8 @@ import DarkSide from './DarkSide/DarkSide';
 import GoodSide from './GoodSide/GoodSide';
 
 const Cosmos = styled.div`
-  background-color: red;
+  border: solid 1px black;
+  position: relative;
   width: 100%;
   height: 500px;
 `

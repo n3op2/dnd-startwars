@@ -4,7 +4,17 @@ import { DropTarget } from 'react-dnd';
 
 import styled from 'styled-components';
 
+const PlanetCont = styled.div`
+  position: absolute;
+  left: ${props => props.x}px;
+  top: ${props => props.y}px;
+  width: 50px;
+  height: 50px;
+   
+`
+
 const PlanetStyled = styled.div`
+  position: relative;
   height: 50px;
   width: 50px;
   background-size: cover;
@@ -27,11 +37,13 @@ const Planet = (props) => {
   const { isOver, connectDropTarget, planet } = props;
 
   return connectDropTarget(
-    <div style={{ width: '50px', height: '50px' }}>
-      <PlanetStyled
-        isOver={isOver}
-        planet={planet} 
-      />
+    <div>
+      <PlanetCont x={planet.x} y={planet.y} >
+        <PlanetStyled
+          isOver={isOver}
+          planet={planet} 
+        />
+      </PlanetCont>
     </div>
   )
 }

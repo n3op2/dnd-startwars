@@ -11,19 +11,28 @@ export const planetsReducer = (state = reduxStore.planets, { type, payload }) =>
         if (el.id === payload.id) {
           const {...obj} = el;
           if(el.lucas) {
+            /* REMOVE KEY 
             const {lucas, ...noLucas} = obj;
             return noLucas;
+            */
+            /* UPDATE KEY */
+            obj.lucas = false 
+            return obj;
           }
           return { ...obj, interceptor: payload.obj }
         }
         return el;
       })
     case 'REMOVE_KEY':
-      const i = newState.findIndex(item =>
-        item === filterById(newState, payload.el.id)[0]);
-      delete newState[i].interceptor;
-      return newState;
+      return state.map(el => {
+        if(el.id === payload.el.id) {
+          const {interceptor, ...noInterceptor} = el;
+          return noInterceptor;
+        }
+        return el;
+      });
     case 'ADD_KEY_TO_RND_EL':
+      //To find a better way of achieving this.
       newState[Math.floor(Math.random() * newState.length)].lucas = payload;
       return newState;
     default:
