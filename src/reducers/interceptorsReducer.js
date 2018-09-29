@@ -1,6 +1,7 @@
-import { reduxStore } from '../Store.js';
+import { reduxStore } from '../initialState.js';
 
 const interceptorsReducer = (state = reduxStore.interceptors, action) => {
+  // redo this
   const newArr = [...state]
   switch (action.type) {
     case 'REMOVE_ELEMENT':

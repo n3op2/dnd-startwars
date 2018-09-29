@@ -36,12 +36,11 @@ class GoodSide extends PureComponent {
   }
   
   componentDidUpdate() {
+    //remove this
     const { planets } = this.props;
     const tmpArr = [];
-    console.log('componentDidUpadte');
     planets.map(item => {
       item.lucas ? tmpArr.push(item) : null; 
-      return item;
     });
     //Need to figure out a better approch, 
     //calls itself to many times due to props being updated.
