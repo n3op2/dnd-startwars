@@ -1,8 +1,5 @@
 import { reduxStore } from '../initialState.js';
 
-//move to something like utils.js?
-const filterById = (arr, id) => arr.filter(item => item.id === id);
-
 export const planetsReducer = (state = reduxStore.planets, { type, payload }) => {
   const newState = [...state];
   switch (type) {
@@ -17,7 +14,7 @@ export const planetsReducer = (state = reduxStore.planets, { type, payload }) =>
             */
             /* UPDATE KEY */
             obj.lucas = false 
-            return obj;
+            return {...obj, interceptor: payload.obj};
           }
           return { ...obj, interceptor: payload.obj }
         }
