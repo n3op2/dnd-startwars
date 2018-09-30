@@ -48,7 +48,7 @@ class GoodSide extends PureComponent {
   render() {
     const { planets } = this.props;
     
-    // Need to find a better way...
+    // Need to find a better way... this is temp
     if(this.state.gameOn.length > 0) {
       return<h1 style={{ lineHeight: '500px', color: 'white' }}>Lucas has been captured!</h1>
     } else {

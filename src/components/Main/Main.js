@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import Space from './Space/Space';
 import actions from '../../actions';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-
 
 const Cosmos = styled.div`
   border: solid 1px black;
@@ -13,22 +13,32 @@ const Cosmos = styled.div`
   background-size: cover;
   background-image: url(${props => props.image});
 `
+const styles = {
+  btn: { 
+    color: 'cyan', 
+    borderColor: 'cyan', 
+    position: 'absolute', 
+    top: '50%', 
+    left: '45%' 
+  }
+}
+
 class Main extends PureComponent {
   constructor(props) {
     super(props); 
     this.startGame = this.startGame.bind(this);
   }
 
-  startGame = () => {
-    this.props.gameState(true);  
+  startGame = (val) => {
+    this.props.gameState(val);  
   }
 
   render() {
     console.log(this.props);
-    if(this.props.game) return <Space />
+    if(this.props.game) return <Cosmos image='/img/stars.png'><Space /></Cosmos>
     return (
       <Cosmos image='/img/stars.png'>
-        <button onClick={this.startGame}>Start Game</button>
+        <Button onClick={() => this.startGame('true')} style={styles.btn} variant='outlined'>Start</Button>
       </Cosmos>
     );
   }
