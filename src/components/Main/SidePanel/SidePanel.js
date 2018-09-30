@@ -6,12 +6,11 @@ import actions from '../../../actions';
 import { connect } from 'react-redux';
 
 const SidePanel = (props) => {
-  console.log(props);
   return (
     <div>
       <button 
         onClick={() => props.panelState(true)}
-      >Open</button>
+      >Options</button>
       <Drawer 
         anchor='right'
         open={props.panel.panel}
