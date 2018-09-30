@@ -34,18 +34,26 @@ class Main extends PureComponent {
   }
 
   render() {
-    console.log(this.props);
-    if(this.props.game) return <Cosmos image='/img/stars.png'><Space /></Cosmos>
-    return (
+    if(this.props.game) return (
       <Cosmos image='/img/stars.png'>
-        <Button onClick={() => this.startGame('true')} style={styles.btn} variant='outlined'>Start</Button>
+        <Space />
+      </Cosmos>
+    );
+    return (
+      <Cosmos 
+        image='/img/stars.png'
+      >
+        <Button 
+          onClick={() => this.startGame('true')} 
+          style={styles.btn} variant='outlined'
+        >Start</Button>
       </Cosmos>
     );
   }
 };
 
 const mapActionsToProps = {
-  gameState: actions.updateBoolean
+  gameState: actions.updateGameState,
 }
 
 const mapStateToProps = (state) => ({

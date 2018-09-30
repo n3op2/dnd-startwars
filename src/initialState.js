@@ -77,7 +77,8 @@ export const reduxStore = {
       imgSrc: '/img/interceptor.png'
     },
   ],
-  game: false
+  game: false,
+  panel: false
 };
 
 

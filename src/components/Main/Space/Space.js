@@ -4,10 +4,13 @@ import { DragDropContext } from 'react-dnd';
 
 import DarkSide from './DarkSide/DarkSide';
 import GoodSide from './GoodSide/GoodSide';
+import SidePanel from '../SidePanel/SidePanel';
 
 const Space = (props) => {
   return (
     <Fragment>
+      <SidePanel 
+      />
       <DarkSide />
       <GoodSide />
     </Fragment>
