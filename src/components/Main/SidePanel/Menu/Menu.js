@@ -15,9 +15,9 @@ const MenuTitle = styled.div`
 `
 
 const menuItems = [
-  { name: 'Option1' },
-  { name: 'Reset' },
-  { name: 'GitHub' },
+  { name: 'Option1', id: 1 },
+  { name: 'Reset', id: 2 },
+  { name: 'GitHub', id: 3  }
 ];
 
 const Menu = (props) => {
