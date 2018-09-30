@@ -76,7 +76,8 @@ export const reduxStore = {
       name: 'ship3', 
       imgSrc: '/img/interceptor.png'
     },
-  ]
+  ],
+  game: false
 };
 
 

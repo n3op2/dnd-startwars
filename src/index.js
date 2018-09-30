@@ -7,6 +7,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const rootReducer = combineReducers({
+  game: reducers.gameStateReducer,
   planets: reducers.planetsReducer,
   interceptors: reducers.interceptorsReducer
 });

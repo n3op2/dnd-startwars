@@ -1,4 +1,4 @@
-import { reduxStore } from '../initialState.js';
+import { reduxStore } from '../initialState';
 
 const interceptorsReducer = (state = reduxStore.interceptors, action) => {
   // redo this

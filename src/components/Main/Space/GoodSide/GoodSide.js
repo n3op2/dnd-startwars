@@ -50,7 +50,7 @@ class GoodSide extends PureComponent {
     
     // Need to find a better way...
     if(this.state.gameOn.length > 0) {
-      return<h1 style={{ lineHeight: '500px' }}>Lucas has been captured!</h1>
+      return<h1 style={{ lineHeight: '500px', color: 'white' }}>Lucas has been captured!</h1>
     } else {
       return (
        <Fragment>
