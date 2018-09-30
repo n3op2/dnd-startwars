@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../../../actions';
 import Interceptor from './Interceptor/Interceptor';
+import DeathStar from './DeathStar/DeathStar';
 
 class DarkSide extends PureComponent {
   constructor(props) {
@@ -17,13 +18,14 @@ class DarkSide extends PureComponent {
     const { interceptors } = this.props;
     return (
       <Fragment>
-      {interceptors.map((interceptor, i) =>
-        <Interceptor 
-          key={i} 
-          interceptor={interceptor} 
-          handleDrop={(el) => this.handleDrop(el)}
-        />
-      )}
+        <DeathStar />
+        {interceptors.map((interceptor, i) =>
+          <Interceptor 
+            key={i} 
+            interceptor={interceptor} 
+            handleDrop={(el) => this.handleDrop(el)}
+          />
+        )}
       </Fragment>
     )
   }

@@ -11,11 +11,13 @@ const Cosmos = styled.div`
   position: relative;
   width: 100%;
   height: 500px;
+  background-size: cover;
+  background-image: url(${props => props.image});
 `
 
 const Space = (props) => {
   return (
-    <Cosmos>
+    <Cosmos image='/img/stars.png'>
       <DarkSide />
       <GoodSide />
     </Cosmos>

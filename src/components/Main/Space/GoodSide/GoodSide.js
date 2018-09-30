@@ -15,7 +15,6 @@ class GoodSide extends PureComponent {
     this.setTimer = this.setTimer.bind(this);
   }
 
-  //Create a class? Closure? Anything?
   setTimer = (length, obj, el) => {
     let seconds = 0;
     const { planets } = this.props;
@@ -33,9 +32,12 @@ class GoodSide extends PureComponent {
   }
 
   handleDrop = (el, obj) => {
-    this.props.updateElement(el, obj);
-    //Timer calls an action;
-    this.setTimer(4, obj, el);
+    const updateEl = new Promise(resolve => {
+      resolve(this.props.updateElement(el,obj));
+    });
+    updateEl.then(res => {
+      this.setTimer(10, obj, el);
+    });
   }
 
   componentDidMount() {
@@ -45,20 +47,10 @@ class GoodSide extends PureComponent {
   
   render() {
     const { planets } = this.props;
-
+    
+    // Need to find a better way...
     if(this.state.gameOn.length > 0) {
-      return (
-       <Fragment>
-          <h1 style={{ position: 'absolute' }}>Lucas has been captured!</h1>
-          {planets.map((planet, i) => 
-            <Planet
-              handleDrop={(el, obj) => this.handleDrop(el, obj)}
-              key={i}
-              planet={planet}
-            />
-          )}
-        </Fragment>
-      );
+      return<h1 style={{ lineHeight: '500px' }}>Lucas has been captured!</h1>
     } else {
       return (
        <Fragment>
@@ -74,6 +66,7 @@ class GoodSide extends PureComponent {
     }
   }
 }
+
 
 const mapActionsToProps = {
   updateElement: actions.updateElement,

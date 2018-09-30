@@ -6,11 +6,16 @@ import styled from 'styled-components';
 
 const style = {
   shipSize: {
+    position: 'relative',
+    display: 'inline-block',
+    zIndex: 100,
+    top: '110px',
     width: '50px',
     height: '50px'
   }
 }
 const Ship = styled.div`
+  background-color: ${props => props.isDragging ? 'red' : 'none'};
   width: 50px;
   height: 50px;
   background-size: cover; 

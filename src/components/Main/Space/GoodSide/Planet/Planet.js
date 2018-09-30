@@ -10,7 +10,6 @@ const PlanetCont = styled.div`
   top: ${props => props.y}px;
   width: 50px;
   height: 50px;
-   
 `
 
 const PlanetStyled = styled.div`
