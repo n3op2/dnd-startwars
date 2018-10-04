@@ -4,3 +4,6 @@
 * Redux 
 * React-DND
 * Material-UI
+* Styled-Components
+
+
