@@ -4,6 +4,7 @@ import actions from '../../../../../actions';
 
 import { connect } from 'react-redux';
 
+/// ?
 const click = (id, props) => {
   switch (id) {
     case 1:
@@ -11,6 +12,8 @@ const click = (id, props) => {
       break;
     case 2:
       props.reset();
+      props.addKey();
+      props.updateLukeFound(false);
       break;
     case 3:
       window.location.href = 'https://github.com/n3op2/dnd-startwars';
@@ -41,7 +44,9 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   updateGame: actions.updateGameState, 
-  reset: actions.reset
+  reset: actions.reset,
+  updateLukeFound: actions.updateLukeFound,
+  addKey: actions.addKey
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(MenuItem);

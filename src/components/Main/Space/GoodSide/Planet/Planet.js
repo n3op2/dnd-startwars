@@ -34,7 +34,6 @@ const collect = (connect, monitor) => ({
 
 const Planet = (props) => {
   const { isOver, connectDropTarget, planet } = props;
-
   return connectDropTarget(
     <div>
       <PlanetCont x={planet.x} y={planet.y} >

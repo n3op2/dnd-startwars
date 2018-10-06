@@ -10,7 +10,8 @@ const rootReducer = combineReducers({
   panel: reducers.panelStateReducer,
   game: reducers.gameStateReducer,
   planets: reducers.planetsReducer,
-  interceptors: reducers.interceptorsReducer
+  interceptors: reducers.interceptorsReducer,
+  lukeFound: reducers.updateLukeReducer
 });
 
 const store = createStore(

@@ -62,7 +62,6 @@ class Main extends PureComponent {
   }
 
   render() {
-    console.log(this.props.game.game);
     if(this.props.game) return (
       <Cosmos image='/img/stars.jpeg'>
         <Space />

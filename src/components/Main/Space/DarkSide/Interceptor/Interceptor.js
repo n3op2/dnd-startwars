@@ -15,7 +15,6 @@ const style = {
   }
 }
 const Ship = styled.div`
-  background-color: ${props => props.isDragging ? 'red' : 'none'};
   width: 50px;
   height: 50px;
   background-size: cover; 

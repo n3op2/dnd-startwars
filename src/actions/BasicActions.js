@@ -1,7 +1,14 @@
 // This is somethingn I should review later.
+
+// Find a more suitable name or merge?
+const updateLukeFound = (val) => ({
+  type: 'UPDATE_LUKE_FOUND',
+  payload: val
+});
+
 const reset = () => ({
   type: 'RESET'
-});// << TEST
+});
 
 const updateGameState = (val) => ({
   type: 'UPDATE_GAME_STATE',
@@ -18,5 +25,6 @@ const updatePanelState = (val) => ({
 export {
   updateGameState,
   updatePanelState,
+  updateLukeFound,
   reset
 }
