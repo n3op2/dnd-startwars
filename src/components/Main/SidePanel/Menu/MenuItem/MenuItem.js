@@ -1,5 +1,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import actions from '../../../../../actions';
+
+import { connect } from 'react-redux';
 
 const click = (id, props) => {
   switch (id) {
@@ -7,7 +10,7 @@ const click = (id, props) => {
       console.log(id);
       break;
     case 2:
-      console.log(id);
+      props.reset();
       break;
     case 3:
       window.location.href = 'https://github.com/n3op2/dnd-startwars';
@@ -32,4 +35,13 @@ const MenuItem = (props) => (
   </Button> 
 );
 
-export default MenuItem;
+const mapStateToProps = (state) => ({
+  game: state.game
+});
+
+const mapActionsToProps = {
+  updateGame: actions.updateGameState, 
+  reset: actions.reset
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(MenuItem);

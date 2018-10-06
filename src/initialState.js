@@ -6,10 +6,9 @@ const getRandomX = () => {
   if(x > (w - 50)) return x - 50;
   return x;
 };
-const getRandomY = () => Math.floor(Math.random() * 300 + 150);
+const getRandomY = () => Math.floor(Math.random() * 450 + 150);
 
-export const reduxStore = {
-  planets: [
+export const reduxPlanets = () => ([
     { 
       id: 1,
       x: getRandomX(),
@@ -58,8 +57,24 @@ export const reduxStore = {
       y: getRandomY(),
       name: 'planet7',
       imgSrc: '/img/planet7.png'
+    },
+    { 
+      id: 8,
+      x: getRandomX(),
+      y: getRandomY(),
+      name: 'planet8',
+      imgSrc: '/img/planet5.png'
+    },
+    { 
+      id: 9,
+      x: getRandomX(),
+      y: getRandomY(),
+      name: 'planet9',
+      imgSrc: '/img/planet2.png'
     }
-  ],
+]);
+
+export const reduxStore = {
   interceptors: [
     { 
       id: 1,

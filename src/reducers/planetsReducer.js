@@ -1,8 +1,11 @@
-import { reduxStore } from '../initialState.js';
+import { reduxPlanets } from '../initialState.js';
+console.log('re Planets: ', reduxPlanets);
 
-export const planetsReducer = (state = reduxStore.planets, { type, payload }) => {
+export const planetsReducer = (state = reduxPlanets(), { type, payload }) => {
   const newState = [...state];
   switch (type) {
+    case 'RESET':
+      return reduxPlanets();
     case 'UPDATE_ELEMENT':
       return state.map(el => {
         if (el.id === payload.id) {

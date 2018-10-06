@@ -1,9 +1,11 @@
 // This is somethingn I should review later.
+const reset = () => ({
+  type: 'RESET'
+});// << TEST
+
 const updateGameState = (val) => ({
   type: 'UPDATE_GAME_STATE',
-  payload: {
-    game: val
-  }
+  payload: val
 });
 
 const updatePanelState = (val) => ({
@@ -15,5 +17,6 @@ const updatePanelState = (val) => ({
 
 export {
   updateGameState,
-  updatePanelState
+  updatePanelState,
+  reset
 }

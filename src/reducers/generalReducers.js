@@ -13,7 +13,6 @@ const gameStateReducer = (state = reduxStore.game, action) => {
 const panelStateReducer = (state = reduxStore.panel, action) => {
   switch (action.type) {
     case 'UPDATE_PANEL_STATE':
-      console.log(action);
       return action.payload;
     default:
       return state; 

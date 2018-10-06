@@ -1,9 +1,10 @@
 import { addElement, updateElement, removeElement} from './ArrayOperations';
 import { removeKey, addKey } from './ObjectOperations';
-import { updateGameState, updatePanelState } from './BasicActions';
+import { updateGameState, updatePanelState, reset } from './BasicActions';
 
 export default {
   addKey,
+  reset,
   removeKey,
   addElement,
   removeElement, 

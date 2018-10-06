@@ -76,7 +76,8 @@ const mapActionsToProps = {
 }
 
 const mapStateToProps = (state) => ({
-  planets: state.planets
+  planets: state.planets,
+  gmae: state.game
 });
 
 export default connect(
