@@ -23,8 +23,9 @@ class GoodSide extends PureComponent {
         clearInterval(countDown);
         this.props.addElement(obj);
         this.props.removeKey(el);
-        if(planets.filter(el => el.lucas === false))
+        if(planets.some(el => el.lucas === false)){
           this.props.updateLukeFound(true);
+        }
       }
     }, 1000);
   }
@@ -34,7 +35,7 @@ class GoodSide extends PureComponent {
       resolve(this.props.updateElement(el, obj));
     });
     updateEl.then(res => {
-      this.startCounting(2, obj, el);
+      this.startCounting(5, obj, el);
     });
   }
 

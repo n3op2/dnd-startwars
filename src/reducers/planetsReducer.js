@@ -1,5 +1,4 @@
 import { reduxPlanets } from '../initialState.js';
-console.log('re Planets: ', reduxPlanets);
 
 export const planetsReducer = (state = reduxPlanets(), { type, payload }) => {
   const newState = [...state];
@@ -11,11 +10,6 @@ export const planetsReducer = (state = reduxPlanets(), { type, payload }) => {
         if (el.id === payload.id) {
           const {...obj} = el;
           if(el.lucas) {
-            /* REMOVE KEY 
-            const {lucas, ...noLucas} = obj;
-            return noLucas;
-            */
-            /* UPDATE KEY */
             obj.lucas = false 
             return {...obj, interceptor: payload.obj};
           }
@@ -34,6 +28,8 @@ export const planetsReducer = (state = reduxPlanets(), { type, payload }) => {
     case 'ADD_KEY_TO_RND_EL':
       //To find a better way of achieving this.
       newState[Math.floor(Math.random() * newState.length)].lucas = payload;
+      return newState;
+    case 'TIMER_TEST':
       return newState;
     default:
       return state;

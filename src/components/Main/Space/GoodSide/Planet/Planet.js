@@ -29,13 +29,17 @@ const planetSource = {
 
 const collect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
+  didDrop: monitor.didDrop(),
   isOver: monitor.isOver(),
 });
 
 const Planet = (props) => {
-  const { isOver, connectDropTarget, planet } = props;
+  const { isOver, connectDropTarget, didDrop, planet } = props;
+  if(didDrop){
+    console.log('Planet.total: ', planet.total);
+  }
   return connectDropTarget(
-    <div>
+    <div style={{ color: 'white' }}>{planet.interceptor ? planet.total : 'test'}
       <PlanetCont x={planet.x} y={planet.y} >
         <PlanetStyled
           isOver={isOver}
