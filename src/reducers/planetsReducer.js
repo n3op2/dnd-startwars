@@ -29,8 +29,16 @@ export const planetsReducer = (state = reduxPlanets(), { type, payload }) => {
       //To find a better way of achieving this.
       newState[Math.floor(Math.random() * newState.length)].lucas = payload;
       return newState;
-    case 'TIMER_TEST':
-      return newState;
+    case 'UPDATE_KEY_VAL':
+      // Something to review later state.filter(....)[0].
+      const currentPlanet = state.filter(el => el.id === payload.id)[0];
+      currentPlanet.total--;
+      return state.map(el => {
+        if(currentPlanet.id === el.id) {
+          return currentPlanet;
+        }
+        return el;
+      });
     default:
       return state;
   }

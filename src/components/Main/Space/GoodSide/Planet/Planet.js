@@ -6,8 +6,8 @@ import styled from 'styled-components';
 
 const PlanetCont = styled.div`
   position: absolute;
-  left: ${props => props.x}px;
-  top: ${props => props.y}px;
+  left: ${props => props.planet.x}px;
+  top: ${props => props.planet.y}px;
   width: 50px;
   height: 50px;
 `
@@ -21,6 +21,13 @@ const PlanetStyled = styled.div`
   background-image: url(${props => props.planet.interceptor ? props.planet.interceptor.imgSrc : props.planet.imgSrc });
 `
 
+const PlanetTimer = styled.div`
+  position: absolute;
+  left: ${props => props.planet.x}px;
+  top: ${props => props.planet.y - 15}px;
+  color: white; 
+`
+
 const planetSource = {
   drop(props, monitor) {
     props.handleDrop(props.planet, monitor.getItem());
@@ -29,18 +36,19 @@ const planetSource = {
 
 const collect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
-  didDrop: monitor.didDrop(),
   isOver: monitor.isOver(),
+  getItem: monitor.getItem()
 });
 
 const Planet = (props) => {
-  const { isOver, connectDropTarget, didDrop, planet } = props;
-  if(didDrop){
-    console.log('Planet.total: ', planet.total);
-  }
+  const { isOver, connectDropTarget, planet} = props;
+
   return connectDropTarget(
-    <div style={{ color: 'white' }}>{planet.interceptor ? planet.total : 'test'}
-      <PlanetCont x={planet.x} y={planet.y} >
+    <div> 
+      <PlanetTimer planet={planet}>
+        {planet.interceptor ? planet.total : planet.name}
+      </PlanetTimer>
+      <PlanetCont planet={planet} >
         <PlanetStyled
           isOver={isOver}
           planet={planet} 

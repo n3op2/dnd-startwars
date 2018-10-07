@@ -10,7 +10,13 @@ const addKey = () => ({
   payload: true 
 });
 
+const updateKeyVal = (obj) => ({
+    type: 'UPDATE_KEY_VAL',
+    payload: obj
+});
+
 export {
+  updateKeyVal,
   removeKey,
   addKey
 };

@@ -81,6 +81,7 @@ class Main extends PureComponent {
           onClose={this.handleDialogClose}
           aria-labelledby="alert-title"
           aria-describedby="alert-description"
+          style={{top: '-20%'}}
         >
           <DialogTitle id="alert-title">{"The Game Rules:"}</DialogTitle>
           <DialogContent>

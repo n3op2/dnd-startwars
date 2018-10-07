@@ -1,28 +1,35 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../../../actions';
-
 import Planet from './Planet/Planet';
+import styled from 'styled-components';
+
+const DialogText = styled.div`
+  font-size: 16px;
+  color: #a9a9a9;
+`
 
 class GoodSide extends PureComponent {
   constructor(props) {
     super(props);
-    //Move to redux?
+    this.state = {
+      show: false
+    }
     this.handleDrop = this.handleDrop.bind(this);
     this.startCounting = this.startCounting.bind(this);
   }
 
   /// Get rid of this. find a better way....
-  startCounting = (length, obj, el) => {
+  startCounting = (length, planet, interceptor) => {
     let seconds = 0;
     const { planets } = this.props;
-    
     const countDown = setInterval(() => {
       seconds++;
+      this.props.updateKeyVal(planet);
       if(seconds >= length) {
         clearInterval(countDown);
-        this.props.addElement(obj);
-        this.props.removeKey(el);
+        this.props.addElement(interceptor);
+        this.props.removeKey(planet);
         if(planets.some(el => el.lucas === false)){
           this.props.updateLukeFound(true);
         }
@@ -30,12 +37,12 @@ class GoodSide extends PureComponent {
     }, 1000);
   }
 
-  handleDrop = (el, obj) => {
+  handleDrop = (planet, interceptor) => {
     const updateEl = new Promise(resolve => {
-      resolve(this.props.updateElement(el, obj));
+      resolve(this.props.updateElement(planet, interceptor));
     });
     updateEl.then(res => {
-      this.startCounting(5, obj, el);
+      this.startCounting(planet.total, planet, interceptor);
     });
   }
 
@@ -45,10 +52,15 @@ class GoodSide extends PureComponent {
   }
   
   render() {
-    const { planets } = this.props;
+    const { planets, lukeFound } = this.props;
     
-    if(this.props.lukeFound) {
-      return <h1 style={{ lineHeight: '500px', color: 'white' }}>Lucas has been captured!</h1>
+    if(lukeFound) {
+      //A Dialog box or somt?
+      return (
+        <DialogText>
+          {"Congratulations, you have successfully captured Luke. Long live Death Star."}
+        </DialogText>
+      )
     } 
     return (
      <Fragment>
@@ -61,7 +73,7 @@ class GoodSide extends PureComponent {
           />
         )}
       </Fragment>
-    )
+    );
   }
 }
 
@@ -71,7 +83,8 @@ const mapActionsToProps = {
   addElement: actions.addElement,
   addKey: actions.addKey,
   removeKey: actions.removeKey,
-  updateLukeFound: actions.updateLukeFound
+  updateLukeFound: actions.updateLukeFound,
+  updateKeyVal: actions.updateKeyVal
 }
 
 const mapStateToProps = (state) => ({
