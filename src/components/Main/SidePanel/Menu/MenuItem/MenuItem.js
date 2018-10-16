@@ -43,7 +43,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  updateGame: actions.updateGameState, 
   reset: actions.reset,
   updateLukeFound: actions.updateLukeFound,
   addKey: actions.addKey
